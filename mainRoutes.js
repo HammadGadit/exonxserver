@@ -372,6 +372,11 @@ router.get('/usastats', (req, res) => {
             current: 99.6,
             historic: [109.9, 100.6, 100.3, 100.6, 101.2, 99.3],
             labels: [2015, 2016, 2017, 2018, 2019, 2020]
+        },
+        businessconfidenceindex: {
+            current: 101.6,
+            historic: [99.8, 98.9, 100.7, 101.5, 100.6, 99.1],
+            labels: [2015, 2016, 2017, 2018, 2019, 2020]
         }
     }
     res.send(usastats)
@@ -437,7 +442,13 @@ router.get('/ukstats', (req, res)=> {
             current: -16.9,
             historic: [-7.10,-6.50, -6.80, -9.20, -8.70],
             labels: [2015, 2016, 2017, 2018, 2019]
+        },
+        businessconfidenceindex: {
+            current: 100.1,
+            historic: [101.51, 100.3, 101.49, 101.87, 101.13, 98.95],
+            labels: [2015, 2016, 2017, 2018, 2019, 2020]
         }
+        
     }
     res.send(ukstats)
 })
@@ -446,8 +457,8 @@ router.get('/ukstats', (req, res)=> {
 router.get('/japanstats', (req, res)=> {
     let japanstats = {
         foreigndirectinvestment: {
-            current: 0.71,
-            historic: [0.10, 0.83, 0.39, 0.53],
+            current: 0.079,
+            historic: [1.55, 12.06, 5.00, 3.00],
             labels: [2015, 2016, 2017, 2018]
         },
         nominalGDP: {
@@ -504,6 +515,11 @@ router.get('/japanstats', (req, res)=> {
             current: 39,
             historic: [38, 42, 42.5, 44.75, 42.5],
             labels: [2015, 2016, 2017, 2018, 2019]
+        },
+        businessconfidenceindex: {
+            current: 99.5,
+            historic: [100.8, 100.7, 100.9, 101.8, 101.4, 100.1],
+            labels: [2015, 2016, 2017, 2018, 2019, 2020]
         }
     }
     res.send(japanstats)
