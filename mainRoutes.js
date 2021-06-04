@@ -439,8 +439,8 @@ router.get('/ukstats', (req, res)=> {
             labels: [2015, 2016, 2017, 2018, 2019, 2020]
         },
         consumerconfidence: {
-            current: -16.9,
-            historic: [-7.10,-6.50, -6.80, -9.20, -8.70],
+            current: -9,
+            historic: [1, 3, -4, -9, -12],
             labels: [2015, 2016, 2017, 2018, 2019]
         },
         businessconfidenceindex: {
