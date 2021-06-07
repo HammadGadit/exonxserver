@@ -230,14 +230,16 @@ router.get('/news', (req, res)=> {
 
         const news = $('a.Card-title')
         let actualNews = []
-        for(let i = 4; i< 15; i++){
-            let pushObject = {
-                title: news[i].children[0].children[0].data,
-                link: news[i].attribs.href
+        for(let i = 6; i< 17; i++){
+            if((news[i].children[0] !== undefined)&&(news[i].attribs.href !== undefined)){
+                let pushObject = {
+                    title: news[i].children[0].children[0].data,
+                    link: news[i].attribs.href
+                }
+                actualNews.push(pushObject)
             }
-            actualNews.push(pushObject)
         }
-        realRes.send(actualNews)
+        realRes.send(actualNews)  
     })
 })
 
