@@ -17,7 +17,7 @@ let ogtihistoric = []
 function compareAndPush(currentValue, historicArr) {
     if (currentValue !== historicArr[historicArr.length-1]){
         historicArr.push(currentValue)
-        if(historicArr.length > 100){
+        if(historicArr.length > 50){
             historicArr.splice(0,1)
         }
     }
