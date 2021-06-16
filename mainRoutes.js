@@ -24,6 +24,9 @@ function compareAndPush(currentValue, historicArr) {
     }
 }
 
+
+//rnaomd comment
+
 router.get('/pakistanstocks', async (req, res) => {
     let stockInfo = {}
     let realRes = res
