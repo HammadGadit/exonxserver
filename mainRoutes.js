@@ -121,7 +121,7 @@ router.get('/ukstocks', async(req, res)=> {
         // console.log(html)
 
         let ftse100 = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(3) > td:nth-child(2)')
-        if (ftse100[0].children !== undefined){
+        if (ftse100[0] !== undefined){
             ftse100 = Number(ftse100[0].children[0].data.replace(",", ''))
             compareAndPush(ftse100, ftse100historic)
         } else {
@@ -129,7 +129,7 @@ router.get('/ukstocks', async(req, res)=> {
         }
 
         let ftse250 = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(4) > td:nth-child(2)')
-        if (ftse250[0].children !== undefined){
+        if (ftse250[0] !== undefined){
             ftse250 = Number(ftse250[0].children[0].data.replace(",", ''))
             compareAndPush(ftse250, ftse250historic)    
         } else {
@@ -137,7 +137,7 @@ router.get('/ukstocks', async(req, res)=> {
         }
 
         let ftse350 = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(5) > td:nth-child(2)')
-        if (ftse350[0].children !== undefined){
+        if (ftse350[0] !== undefined){
             ftse350 = Number(ftse350[0].children[0].data.replace(",", ''))
             compareAndPush(ftse350, ftse350historic)
         } else {
@@ -146,7 +146,7 @@ router.get('/ukstocks', async(req, res)=> {
         //random comment
 
         let ftseallshr = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(9) > td:nth-child(2)')
-        if (ftseallshr[0].children !== undefined){
+        if (ftseallshr[0] !== undefined){
             ftseallshr = Number(ftseallshr[0].children[0].data.replace(",", ''))
             compareAndPush(ftseallshr, ftseallshrhistoric)
         } else {
