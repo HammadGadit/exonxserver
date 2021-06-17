@@ -121,21 +121,37 @@ router.get('/ukstocks', async(req, res)=> {
         // console.log(html)
 
         let ftse100 = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(3) > td:nth-child(2)')
-        ftse100 = Number(ftse100[0].children[0].data.replace(",", ''))
-        compareAndPush(ftse100, ftse100historic)
+        if (ftse100[0].children !== undefined){
+            ftse100 = Number(ftse100[0].children[0].data.replace(",", ''))
+            compareAndPush(ftse100, ftse100historic)
+        } else {
+            ftse100 = 0
+        }
 
         let ftse250 = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(4) > td:nth-child(2)')
-        ftse250 = Number(ftse250[0].children[0].data.replace(",", ''))
-        compareAndPush(ftse250, ftse250historic)
+        if (ftse250[0].children !== undefined){
+            ftse250 = Number(ftse250[0].children[0].data.replace(",", ''))
+            compareAndPush(ftse250, ftse250historic)    
+        } else {
+            ftse250 = 0
+        }
 
         let ftse350 = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(5) > td:nth-child(2)')
-        ftse350 = Number(ftse350[0].children[0].data.replace(",", ''))
-        compareAndPush(ftse350, ftse350historic)
+        if (ftse350[0].children !== undefined){
+            ftse350 = Number(ftse350[0].children[0].data.replace(",", ''))
+            compareAndPush(ftse350, ftse350historic)
+        } else {
+            ftse350 = 0
+        }
         //random comment
 
         let ftseallshr = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(9) > td:nth-child(2)')
-        ftseallshr = Number(ftseallshr[0].children[0].data.replace(",", ''))
-        compareAndPush(ftseallshr, ftseallshrhistoric)
+        if (ftseallshr[0].children !== undefined){
+            ftseallshr = Number(ftseallshr[0].children[0].data.replace(",", ''))
+            compareAndPush(ftseallshr, ftseallshrhistoric)
+        } else {
+            ftseallshr = 0
+        }
         
         let stockInfo = {
             ftse100: {
