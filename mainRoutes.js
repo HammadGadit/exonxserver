@@ -79,16 +79,40 @@ router.get('/usastocks', async (req, res) => {
         const $ = cheerio.load(html)
         // console.log(html)
         
-        const stock = $('div.marketdata > div.marketprice')
+        let dow = $('body > main > .container > .region--primary > div:nth-child(2) > div > div > div:nth-child(4) > div:nth-child(1) > div > div:nth-child(2) > bg-quote ')
+        if (dow[0] !== undefined){
+            dow = Number(dow[0].children[0].data.replace(",", ''))
+            compareAndPush(dow, dowhistoric)
+        } else {
+            dow = 0
+        }
 
-        let dow = Number(stock['0'].children[0].data.replace(",", ''))
-        compareAndPush(dow, dowhistoric)
+        let nasdaq = $('body > main > .container > .region--primary >div:nth-child(2) > div > div > div:nth-child(4) > div:nth-child(2) > div > div:nth-child(2) > bg-quote')
+        if (nasdaq[0] !== undefined){
+            nasdaq = Number(nasdaq[0].children[0].data.replace(",", ''))
+            compareAndPush(nasdaq, nasdaqhistoric)
+        } else {
+            nasdaq = 0
+        }
 
-        let nasdaq = Number(stock['1'].children[0].data.replace(",", ''))
-        compareAndPush(nasdaq, nasdaqhistoric)
+        let snp500 = $('body > main > .container > .region--primary >div:nth-child(2) > div > div > div:nth-child(4) > div:nth-child(2) > div:nth-child(2) >div:nth-child(2) > bg-quote  ')
+        if (snp500[0] !== undefined){
+            snp500 = Number(snp500[0].children[0].data.replace(",", ''))
+            compareAndPush(snp500, snp500historic)
+        } else {
+            snp500 = 0
+        }
 
-        let snp500 = Number(stock['2'].children[0].data.replace(",", ''))
-        compareAndPush(snp500, snp500historic)
+        // const stock = $('div.marketdata > div.marketprice')
+        
+        // let dow = Number(stock['0'].children[0].data.replace(",", ''))
+        // compareAndPush(dow, dowhistoric)
+
+        // let nasdaq = Number(stock['1'].children[0].data.replace(",", ''))
+        // compareAndPush(nasdaq, nasdaqhistoric)
+
+        // let snp500 = Number(stock['2'].children[0].data.replace(",", ''))
+        // compareAndPush(snp500, snp500historic)
 
         let stockInfo = {
             dow: {
@@ -118,7 +142,7 @@ router.get('/ukstocks', async(req, res)=> {
     let realRes = res
     await request('https://shareprices.com/indices', (err, res, html)=> {
         const $ = cheerio.load(html)
-        // console.log(html)
+    
 
         let ftse100 = $('body > div.wrapper-3-col-wide > div > div > div.wrapper-3-col-wide__center > div:nth-child(3) > div > table > tbody > tr:nth-child(3) > td:nth-child(2)')
         if (ftse100[0] !== undefined){
@@ -184,9 +208,9 @@ router.get('/japanstocks', async (req, res)=> {
         const $ = cheerio.load(html)
         // console.log(html)
 
-        let nikkei225 = $('h3.intraday__price > bg-quote.value')
+        let nikkei225 = $('h2.intraday__price > bg-quote.value')
         if (nikkei225[0] === undefined){
-            nikkei225 = $('h3.intraday__price > span.value')
+            nikkei225 = $('h2.intraday__price > span.value')
         }
         nikkei225 = Number(nikkei225[0].children[0].data.replace(",", ''))
         compareAndPush(nikkei225, nikkei225historic)
